@@ -5,9 +5,7 @@ CineVerse is a high-end, cinematic web application built with **Next.js 16 (App 
 ---
 
 ## 🚀 Live Links
-- **Live Deployment:** [Insert Vercel Link Here]
-- **Frontend Repository:** [Insert GitHub Link Here]
-- **Backend API:** [Insert Express Server Link Here]
+- **Live Deployment:** https://cineverse-joy.vercel.app/
 
 ---
 

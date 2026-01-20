@@ -13,10 +13,10 @@ export function HeroSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
             <Star className="w-4 h-4 text-primary fill-primary" />
             <span className="text-sm text-primary font-medium">Featured This Week</span>
-          </div>
+          </div> */}
 
           <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight text-balance">
             Discover Your Next

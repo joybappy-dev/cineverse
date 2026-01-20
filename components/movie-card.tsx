@@ -9,10 +9,13 @@ interface MovieCardProps {
   movie: Movie;
 }
 
+// ... existing imports
+
 export function MovieCard({ movie }: MovieCardProps) {
   return (
     <Link href={`/items/${movie.id}`}>
-      <Card className="h-full border-border bg-card hover:border-primary/50 transition-all duration-300 overflow-hidden group cursor-pointer">
+      {/* ADDED 'p-0' TO THE CLASSNAME BELOW */}
+      <Card className="h-full p-0 border-border bg-card hover:border-primary/50 transition-all duration-300 overflow-hidden group cursor-pointer">
         <div className="relative aspect-[2/3] overflow-hidden bg-muted">
           <Image
             src={movie.image || "/placeholder.svg"}
