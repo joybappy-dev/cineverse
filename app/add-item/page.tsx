@@ -1,17 +1,23 @@
-'use client';
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useState } from 'react';
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/footer';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Clapperboard, AlertCircle, Film, Star } from 'lucide-react';
-import { toast } from 'sonner';
-import { genres } from '@/lib/mock-data';
+import { useState } from "react";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Clapperboard, AlertCircle, Film, Star } from "lucide-react";
+import { toast } from "sonner";
+import { genres } from "@/lib/mock-data";
 
 interface FormData {
   title: string;
@@ -26,14 +32,14 @@ interface FormData {
 
 export default function AddMoviePage() {
   const [formData, setFormData] = useState<FormData>({
-    title: '',
-    genre: 'Action',
-    rating: '8.0',
-    synopsis: '',
-    year: '2024',
-    duration: '',
-    director: '',
-    image: '',
+    title: "",
+    genre: "Action",
+    rating: "8.0",
+    synopsis: "",
+    year: "2024",
+    duration: "",
+    director: "",
+    image: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -42,19 +48,19 @@ export default function AddMoviePage() {
     const newErrors: Partial<FormData> = {};
 
     if (!formData.title.trim()) {
-      newErrors.title = 'Movie title is required';
+      newErrors.title = "Movie title is required";
     }
     if (!formData.synopsis.trim()) {
-      newErrors.synopsis = 'Synopsis is required';
+      newErrors.synopsis = "Synopsis is required";
     }
     if (!formData.director.trim()) {
-      newErrors.director = 'Director name is required';
+      newErrors.director = "Director name is required";
     }
     if (!formData.duration.trim()) {
-      newErrors.duration = 'Duration is required';
+      newErrors.duration = "Duration is required";
     }
     if (!formData.image.trim()) {
-      newErrors.image = 'Poster URL is required';
+      newErrors.image = "Poster URL is required";
     }
 
     setErrors(newErrors);
@@ -65,7 +71,7 @@ export default function AddMoviePage() {
     e.preventDefault();
 
     if (!validateForm()) {
-      toast.error('Please fix the errors in the form');
+      toast.error("Please fix the errors in the form");
       return;
     }
 
@@ -79,25 +85,27 @@ export default function AddMoviePage() {
       });
 
       setFormData({
-        title: '',
-        genre: 'Action',
-        rating: '8.0',
-        synopsis: '',
-        year: '2024',
-        duration: '',
-        director: '',
-        image: '',
+        title: "",
+        genre: "Action",
+        rating: "8.0",
+        synopsis: "",
+        year: "2024",
+        duration: "",
+        director: "",
+        image: "",
       });
       setErrors({});
     } catch {
-      toast.error('Failed to add movie. Please try again.');
+      toast.error("Failed to add movie. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -123,7 +131,9 @@ export default function AddMoviePage() {
                 <Clapperboard className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-4xl font-bold text-foreground">Add New Movie</h1>
+                <h1 className="text-4xl font-bold text-foreground">
+                  Add New Movie
+                </h1>
                 <p className="text-muted-foreground mt-1">
                   Submit a new film to the CineVerse database
                 </p>
@@ -145,7 +155,10 @@ export default function AddMoviePage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title */}
                 <div className="space-y-2">
-                  <Label htmlFor="title" className="text-foreground font-semibold">
+                  <Label
+                    htmlFor="title"
+                    className="text-foreground font-semibold"
+                  >
                     Movie Title *
                   </Label>
                   <Input
@@ -168,7 +181,10 @@ export default function AddMoviePage() {
                 {/* Genre and Year Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="genre" className="text-foreground font-semibold">
+                    <Label
+                      htmlFor="genre"
+                      className="text-foreground font-semibold"
+                    >
                       Genre
                     </Label>
                     <select
@@ -188,7 +204,10 @@ export default function AddMoviePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="year" className="text-foreground font-semibold">
+                    <Label
+                      htmlFor="year"
+                      className="text-foreground font-semibold"
+                    >
                       Release Year
                     </Label>
                     <Input
@@ -209,7 +228,10 @@ export default function AddMoviePage() {
                 {/* Rating and Duration Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="rating" className="text-foreground font-semibold flex items-center gap-2">
+                    <Label
+                      htmlFor="rating"
+                      className="text-foreground font-semibold flex items-center gap-2"
+                    >
                       <Star className="w-4 h-4 text-primary" />
                       Rating (out of 10)
                     </Label>
@@ -229,7 +251,10 @@ export default function AddMoviePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="duration" className="text-foreground font-semibold">
+                    <Label
+                      htmlFor="duration"
+                      className="text-foreground font-semibold"
+                    >
                       Duration *
                     </Label>
                     <Input
@@ -252,7 +277,10 @@ export default function AddMoviePage() {
 
                 {/* Director */}
                 <div className="space-y-2">
-                  <Label htmlFor="director" className="text-foreground font-semibold">
+                  <Label
+                    htmlFor="director"
+                    className="text-foreground font-semibold"
+                  >
                     Director *
                   </Label>
                   <Input
@@ -274,7 +302,10 @@ export default function AddMoviePage() {
 
                 {/* Synopsis */}
                 <div className="space-y-2">
-                  <Label htmlFor="synopsis" className="text-foreground font-semibold">
+                  <Label
+                    htmlFor="synopsis"
+                    className="text-foreground font-semibold"
+                  >
                     Synopsis *
                   </Label>
                   <textarea
@@ -297,7 +328,10 @@ export default function AddMoviePage() {
 
                 {/* Poster URL */}
                 <div className="space-y-2">
-                  <Label htmlFor="image" className="text-foreground font-semibold">
+                  <Label
+                    htmlFor="image"
+                    className="text-foreground font-semibold"
+                  >
                     Movie Poster URL *
                   </Label>
                   <Input
@@ -317,7 +351,8 @@ export default function AddMoviePage() {
                     </p>
                   )}
                   <p className="text-xs text-muted-foreground">
-                    Use picsum.photos for placeholder images or provide your own poster URL
+                    Use picsum.photos for placeholder images or provide your own
+                    poster URL
                   </p>
                 </div>
 
@@ -329,7 +364,7 @@ export default function AddMoviePage() {
                     size="lg"
                     className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                   >
-                    {isLoading ? 'Adding Movie...' : 'Add Movie'}
+                    {isLoading ? "Adding Movie..." : "Add Movie"}
                   </Button>
                   <Button
                     type="reset"
@@ -352,21 +387,31 @@ export default function AddMoviePage() {
           {/* Tips Card */}
           <Card className="mt-8 border-border bg-secondary/50">
             <CardHeader>
-              <CardTitle className="text-lg text-foreground">Tips for Adding Movies</CardTitle>
+              <CardTitle className="text-lg text-foreground">
+                Tips for Adding Movies
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="text-primary font-bold">1.</span>
-                  <span>Use the official movie title including subtitles if applicable</span>
+                  <span>
+                    Use the official movie title including subtitles if
+                    applicable
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary font-bold">2.</span>
-                  <span>Write a synopsis that hooks readers without major spoilers</span>
+                  <span>
+                    Write a synopsis that hooks readers without major spoilers
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary font-bold">3.</span>
-                  <span>Use portrait orientation images for movie posters (2:3 ratio)</span>
+                  <span>
+                    Use portrait orientation images for movie posters (2:3
+                    ratio)
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary font-bold">4.</span>
